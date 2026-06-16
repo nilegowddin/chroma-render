@@ -3,8 +3,8 @@ services:
     name: chromadb
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: python -m chromadb.server.fastapi --host 0.0.0.0 --port 8000
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn chromadb.server.fastapi:app --host 0.0.0.0 --port 8000
     envVars:
       - key: CHROMA_SERVER_CORS_ALLOW_ORIGINS
         value: "*"
